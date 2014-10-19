@@ -1,0 +1,20 @@
+{
+    "name": "Buildgap",
+    "description": "Open Source interface builder for JqueryMobile",
+    "website": "http://buildgapapp.github.io/buildgap",
+    "success_url": "/",
+    "env": {
+        "RAILS_ENV": "production",
+        "COOKIE_SECRET": {
+            "description": "This gets generated",
+            "generator": "secret"
+        },
+        "SETUP_BY": {
+            "description": "",
+            "value": ""
+        }
+    },
+    "scripts": {
+        "postdeploy": "bundle exec rake db:migrate"
+    }
+}
