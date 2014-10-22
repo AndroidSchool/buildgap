@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap/css/bootstrap
+ *= require flat-ui
+ *= require demo
+ *= require_self
+ */
+  body {
+    background-image:url(asset_path("gridme.png",image));
+    background-attachment: fixed;
+    }
+  #canvas_container {
+     
+      margin:auto;
+      width:786px;
+      height:767px;
+      background-repeat:no-repeat;
+  }
+
+  #canvas {
+      position:relative;
+      top:100px;
+      left:190px;
+      width:400px;
+      height:600px;
+      border:2px dashed yellow;
+  }
+  .floating_sub_control .title{
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    background-color:#2F4255;
+    padding:5px;
+    border-bottom:1px solid #34495E
+  }
+  .floating_sub_control .tools {
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    background-color:#34495E;
+    padding:5px;
+    border-top:1px solid #2F4255;
+  }
+  .color_switcher_container {
+    position:relative;
+    min-height:40px;
+  }
+  .color_box {
+    background-color:green;
+    margin:5px;
+    width:30px;
+    height:30px;
+    border:1px solid #2A3B4C;
+    float:left;
+    position:relative
+  }

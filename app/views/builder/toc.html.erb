@@ -1,0 +1,16 @@
+  <div id="toc">
+  		<ul ui-sortable ng-model="toc">
+        	<li ng-click="switchToPage(c.bg_uniq_id)" ng-repeat="c in toc">
+            <div class="pull-left">
+              <i class="fa fa-arrows-v">&nbsp;</i>
+            </div>
+            <div>
+            {{ pageTitle(c.title) }}
+             <div class="pull-right">
+              <i class="fa fa-trash-o">&nbsp;</i>
+            </div>
+            </div>
+           
+          </li>
+      </ul>
+  </div>

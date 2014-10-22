@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="theme/themes/comptheme.css" />
+  <link rel="stylesheet" href="theme/themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" /> 
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+  <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script> 
+
+  <style type="text/css" media="screen">
+body::-webkit-scrollbar {
+    width: 5px;
+}
+body::-webkit-scrollbar-track {
+    background:#f2f2f2 ;
+
+}
+body::-webkit-scrollbar-thumb {
+    background: #FFF;
+
+}
+body::-webkit-scrollbar-thumb {
+    background: #AAA;
+}
+body::-webkit-scrollbar-thumb:active {
+    background: #888;
+
+}
+.highlight {
+  border: 1px solid yellow;
+  background-color:yellow;
+}
+.pad {
+  padding-top:35px;
+}  
+   
+  </style>
+  <script>
+    $(function() {
+          /*$('#content').sortable({
+              placeholder: "ui-state-highlight" 
+            });*/
+    });
+  </script>   
+</head>
+<body>
+
+<div data-role="page" data-control-title="Home" id="page1">
+<div data-role="header" data-id="foo1" data-position="fixed" data-theme="a">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="c.html"><div class="pad"></div></a></li>
+      <li><a class="ui-btn-active ui-state-persist" href="c.html"><div class="pad"></div></a></li>
+      <li><a href="c.html"><div class="pad"></div></a></li>
+    </ul>
+  </div><!-- /navbar -->
+</div><!-- /footer -->
+
+
+</div>
+</body>
+</html>
+

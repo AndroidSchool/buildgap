@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery Mobile page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="theme/themes/comptheme.css" />
+  <link rel="stylesheet" href="theme/themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" /> 
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+  <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script> 
+  <style type="text/css" media="screen">
+body::-webkit-scrollbar {
+    width: 5px;
+}
+body::-webkit-scrollbar-track {
+    background:#f2f2f2 ;
+
+}
+body::-webkit-scrollbar-thumb {
+    background: #FFF;
+
+}
+body::-webkit-scrollbar-thumb {
+    background: #AAA;
+}
+body::-webkit-scrollbar-thumb:active {
+    background: #888;
+
+}
+.highlight {
+  border: 1px solid yellow;
+  background-color:yellow;
+}
+.pad {
+  padding-top:35px;
+}  
+   
+  </style>
+  <script>
+    $(function() {
+          /*$('#content').sortable({
+              placeholder: "ui-state-highlight" 
+            });*/
+    });
+  </script>   
+</head>
+<body style="background-color:white">
+
+<div data-role="page" data-control-title="Home" id="page1" style="background-color:white">
+<div data-role="content" data-id="foo1" style="padding-top:20px !important">
+  <a data-role="button" data-theme="b" href="#page1" style="padding:25px;font-size:25px">
+              Button
+                      </a>
+</div><!-- /footer -->
+
+
+</div>
+</body>
+</html>
+
