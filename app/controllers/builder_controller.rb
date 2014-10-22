@@ -1,8 +1,8 @@
 class BuilderController < ApplicationController
   def show
-    @iframe_host = "http://192.168.1.2:3000"
+    @iframe_host = "#{request.protocol}#{request.host_with_port}"
     if Rails.env.production?
-      @iframe_host = "http://buildgap.com"
+      @iframe_host = "#{request.protocol}#{request.host}"
     end
   end
 end
