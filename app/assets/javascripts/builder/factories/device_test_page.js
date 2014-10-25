@@ -14,12 +14,15 @@ builderApp.factory('DeviceTestPage',function($http){
         width:"100%", 
         height:"100%",
         src:'/iframetest.html'
-       }).appendTo('#device_iframe_holder').load(function(){
+       }).appendTo('#test_device_iframe_holder').load(function(){
         console.log(self.parentController.getUpdatedAppHtml());
-        var custom_js = renderTemplate('custom_js_template',{});
+   
+        var custom_js = renderTemplate('custom_js_template',{custom_js : self.parentController.appData.app.javascript.custom_js });
+        var custom_css = renderTemplate('custom_css_template',{custom_css : self.parentController.appData.app.css.custom_css });
         var body = renderTemplate('device_test_iframe_template',{});
 
         $(iframe).contents().find('body').html(self.parentController.getUpdatedAppHtml());
+        $(iframe).contents().find('head').append(custom_css);
         $(iframe).contents().find('head').append(custom_js);
         //mainJquery = document.getElementById('device_test_iframe').contentWindow.jQuery; 
         //mainJquery(document.getElementById('device_test_iframe').contentWindow.document).trigger('load');

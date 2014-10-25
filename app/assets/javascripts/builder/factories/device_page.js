@@ -347,10 +347,15 @@ builderApp.factory('DevicePage',function($http,PageHeader,PageContent,PageTabbed
       device_page.append(self.pageContent.getUpdatedHtml());
       device_page.append(self.pageFooter.getUpdatedHtml());
       console.log("Data Link to elements");
-      console.log($(device_page).find("[data-link-to]").each(function(i){
+      $(device_page).find("[data-link-to]").each(function(i){
         $(this).attr('href','#' + self.uiService.getPageIdFromPageBgUniqId($(this).attr('data-link-to')));
-      }));
-      return $('<div>').append(device_page).clone().html();
+      });
+      
+      var clone = $('<div>').append(device_page).clone();
+      clone.find('*').removeAttr('data-bgmanage-type');
+      clone.find('*').removeAttr('data-bg-uniq-id');
+      clone.find('.dummy').remove();
+      return clone.html();
     };
 
 

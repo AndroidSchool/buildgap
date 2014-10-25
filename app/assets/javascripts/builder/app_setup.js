@@ -18,7 +18,16 @@ var whiteListKeys = {
         'footer':['bg_uniq_id','id','klass','bgmanage_type','tabs','icon_position','data_theme_swatch']
 }
 
-var builderApp = angular.module('builderApp', ["ngRoute","ngSanitize","ui.sortable","ui.bootstrap"]);
+
+var layoutsEnabledForView = {
+  'BUILDER' : ['east','west'],
+  'TEST': [],
+  'CODE_HTML':['west'],
+  'CODE_JAVASCRIPT':['west'],
+  'CODE_CSS':['west']
+}
+
+var builderApp = angular.module('builderApp', ["ngRoute","ngSanitize","ui.sortable","ui.bootstrap","ui.codemirror"]);
 $(function(){
     $(window).on("navigate", function (event, data) {
   var direction = data.state.direction;

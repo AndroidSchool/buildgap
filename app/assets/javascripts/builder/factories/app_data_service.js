@@ -21,6 +21,32 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
       //TODO fix this. ? unneccessary
       $rootScope.active_widget_id = 'bg_uniq_header_heading';
       $rootScope.documentTree = {};
+
+      // The modes
+      $rootScope.modes = ['Scheme', 'XML', 'Javascript'];
+      $rootScope.mode = $rootScope.modes[2];
+
+
+      self.codeMirrorInstances = {};
+      // The ui-codemirror option
+      $rootScope.cmOption = {
+        lineNumbers: true,
+        indentWithTabs: true,
+        width:'100%',
+        autofocus:true,
+        onLoad : function(_cm){
+          _cm.focus();
+          self.codeMirrorInstances[_cm.options['instance_type']] = _cm;
+          _cm.on("change",function(){
+           if(_cm.options['instance_type'] == 'CODE_JAVASCRIPT'){
+            self.parentController.appData.app.javascript.custom_js = _cm.getValue();
+           } else if(_cm.options['instance_type'] == 'CODE_CSS'){
+            self.parentController.appData.app.css.custom_css = _cm.getValue();
+           }
+
+          });
+        }
+      };
        //TODO what is the right place for this function
        $rootScope.fetchImage = function(widgetData){
 
@@ -79,6 +105,26 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
       }
       $rootScope.testViewEnabled = false;
       $rootScope.codeViewEnabled = false;
+      $rootScope.currentView = 'BUILDER';
+      $rootScope.previousView = null;
+      $rootScope.switchToView = function(view){
+
+        $rootScope.previousView = $rootScope.currentView;
+        $rootScope.currentView = view;
+
+        setTimeout(function(){
+          var codeMirrorInstance = self.codeMirrorInstances[view];
+          if(nullOrUndefined(codeMirrorInstance) == false){
+            if(view == 'CODE_HTML'){
+              self.codeMirrorInstances[view].setValue(self.parentController.getUpdatedAppHtml());
+            }
+            codeMirrorInstance.refresh();
+            codeMirrorInstance.focus();
+          }
+        },100)
+        
+        self.parentController.switchToView(view);
+      }
       $rootScope.toggleTestView = function(){
         $rootScope.codeViewEnabled = false;
         $rootScope.testViewEnabled = !$rootScope.testViewEnabled;
@@ -135,6 +181,15 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
 
         }
       },true);
+      $rootScope.$watch('cmJsModel',function(newVal,oldVal){
+        if(_.isEqual(newVal,oldVal)){
+          console.log("Nothing Changed");
+          return;  
+        }
+        console.log(newVal);
+      },true);
+
+
     }
     AppDataService.prototype.loadWidget = function(widgetData){
       if(nullOrUndefined(widgetData)){
@@ -231,7 +286,16 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
       
     };
 
+    AppDataService.prototype.loadCodeViewerData = function() {
+      var self = this;
+      $rootScope.cmJsModel = self.parentController.appData.app.javascript.custom_js;
+      $rootScope.cmHtmlModel = "Loading Html ... Please Wait.";
+      $rootScope.cmCssModel = self.parentController.appData.app.css.custom_css;
+      
+    };
+
     AppDataService.prototype.load = function(callback){
+      this.loadCodeViewerData();
       this.loadWidgets();
       this.loadDocumentTree();
       console.log($rootScope.widgets);

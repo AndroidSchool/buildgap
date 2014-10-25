@@ -11,6 +11,7 @@
  *= require bootstrap/css/bootstrap
  *= require layout-default-latest
  *= require angular-ui-tree.min
+ *= require codemirror
  *= require flat-ui
  *= require demo
  *= require treeview
@@ -139,4 +140,15 @@ margin-bottom:0px;
   padding-right:2px;
 }
 
-
+.ui-layout-pane {
+  padding:0px;
+}
+.codearea {
+    background-color:red;
+    width:100%;
+    height:100%;
+}
+.CodeMirror {
+        height: 100%;
+        background: white;
+    }

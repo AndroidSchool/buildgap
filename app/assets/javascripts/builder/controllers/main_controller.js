@@ -112,14 +112,32 @@ MainController.prototype.getPageIdFromPageBgUniqId = function(page_bg_uniq_id) {
   }
   return "";
 };
+MainController.prototype.switchToView = function(view) {
+  var self = this;
+  layoutsEnabled = layoutsEnabledForView[view];
+  layoutsDisabled = _.difference(['east','west'],layoutsEnabled);
+  for(var i = 0;i<layoutsEnabled.length;i++){
+    self.scope.layout.show(layoutsEnabled[i]);
+  }
+  for(var i = 0;i<layoutsDisabled.length;i++){
+    self.scope.layout.hide(layoutsDisabled[i]);
+  }
+  
+  self.deviceTestPage.destroy();
+  if(view == 'TEST'){
+    self.deviceTestPage.reload();
+  } 
+};
 MainController.prototype.toggleTestView = function(enabled) {
   var self = this;
   if(enabled){
     self.scope.layout.hide('east');
     self.scope.layout.hide('west');
+    $('#code-layout').hide();
     self.appUIService.hideAllDevicePages();
     self.deviceTestPage.reload();
   } else {
+    $('#code-layout').hide();
     self.scope.layout.show('east');
     self.scope.layout.show('west');
     self.appUIService.switchToActivePage();

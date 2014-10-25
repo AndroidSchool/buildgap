@@ -1,5 +1,13 @@
 {
     "app": {
+        "javascript":{
+            "custom_js" : "",
+            "external_js_list" : []
+        },
+        "css":{
+            "custom_css" : "",
+            "external_css_list" : []
+        },
         "pages": [
             {
                 "bg_uniq_id": "bg_uniq_id_1",
