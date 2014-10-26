@@ -19,14 +19,14 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Javascript <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a ng-click="switchToView('CODE_JAVASCRIPT')" href="">Custom Javascript</a></li>
-                <li><a href="">Add External JS File</a></li>
+                <li><a ng-click="openExternalFiles('JAVASCRIPT')" href="">Manage or Add External JS File</a></li>
               </ul>
             </li>
              <li class="dropdown">
               <a href="" class="dropdown-toggle" data-toggle="dropdown">CSS <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a ng-click="switchToView('CODE_CSS')" href="">Custom CSS</a></li>
-                <li><a href="">Add External CSS File</a></li>
+                <li><a ng-click="openExternalFiles('CSS')"  href="">Manage or Add External CSS File</a></li>
               </ul>
             </li>
             
@@ -34,6 +34,7 @@
           <div class="navbar-nav navbar-right" style="padding-top:6px;padding-right:10px">
 
             <div class="btn-group">
+              <button ng-click="switchToView('BUILDER')" type="button" class="btn btn-xs ">{{ item }}</button>
               <button ng-click="switchToView('BUILDER')" type="button" class="btn btn-xs "><i class="fa fa-wrench"></i>&nbsp;Edit</button>
               <button ng-click="switchToView('TEST')" type="button" class="btn btn-xs btn-primary"><i class="fa fa-play"></i>&nbsp;Test Your app</button>
             </div>

@@ -1,4 +1,4 @@
-builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
+builderApp.factory('AppDataService',function($http,$rootScope,$timeout,$modal){
     var AppDataService = function(parentController){
       var self = this;
       //TODO null checks
@@ -132,6 +132,28 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
         } else {
           return title
         }
+      }
+      
+      $rootScope.openExternalFiles = function(file_type){
+        var modalInstance = $modal.open({
+          templateUrl: 'myModalContent.html',
+          controller: 'ExternalFilesModalController',
+          resolve: {
+            filesData : function(){
+              var files = [];
+              if(file_type == 'JAVASCRIPT' || file_type == 'CSS'){
+                //TODO null check
+                files = self.parentController.appData.app[file_type.toLowerCase()]['files'];
+
+              }
+              return {
+                file_type : file_type,
+                files : files
+              }
+            }
+          }
+        });
+
       }
     }
     AppDataService.prototype.getAppPages = function() {

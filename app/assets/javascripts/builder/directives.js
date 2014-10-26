@@ -34,7 +34,7 @@ builderApp.filter('fieldCapitalize',function(){
       if(text == null || text == undefined){
         return ''
       } else {
-        return _.reduce(text.split('_'),function(returnStr,string){return returnStr + string.charAt(0).toUpperCase() + string.slice(1) + ' '},''); 
+        return _.reduce(text.split('_'),function(returnStr,string){return returnStr + string.charAt(0).toUpperCase() + string.slice(1).toLowerCase() + ' '},''); 
       }
     }
 });

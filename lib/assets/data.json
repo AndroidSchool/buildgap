@@ -2,11 +2,11 @@
     "app": {
         "javascript":{
             "custom_js" : "",
-            "external_js_list" : []
+            "files" : []
         },
         "css":{
             "custom_css" : "",
-            "external_css_list" : []
+            "files" : []
         },
         "pages": [
             {

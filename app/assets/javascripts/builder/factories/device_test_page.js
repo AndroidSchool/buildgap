@@ -22,7 +22,17 @@ builderApp.factory('DeviceTestPage',function($http){
         var body = renderTemplate('device_test_iframe_template',{});
 
         $(iframe).contents().find('body').html(self.parentController.getUpdatedAppHtml());
+        for( var i = 0;i<self.parentController.appData.app.css.files.length;i++){
+          var external_css = renderTemplate('external_css_file_template',{external_file : self.parentController.appData.app.css.files[i] });
+          $(iframe).contents().find('head').append(external_css);
+        }
         $(iframe).contents().find('head').append(custom_css);
+        //TODO null check
+        for( var i = 0;i<self.parentController.appData.app.javascript.files.length;i++){
+          var external_js = renderTemplate('external_javascript_file_template',{external_file : self.parentController.appData.app.javascript.files[i] });
+          $(iframe).contents().find('head').append(external_js);
+        }
+
         $(iframe).contents().find('head').append(custom_js);
         //mainJquery = document.getElementById('device_test_iframe').contentWindow.jQuery; 
         //mainJquery(document.getElementById('device_test_iframe').contentWindow.document).trigger('load');

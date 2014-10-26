@@ -1,3 +1,10 @@
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) == 0;
+  };
+}
+
 function checkIframeLoaded(iframe_id) {
     console.log('Checking for ' +  iframe_id);
     // Get a handle to the iframe element
