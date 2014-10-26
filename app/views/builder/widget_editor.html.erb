@@ -1,0 +1,327 @@
+<style type="text/css">
+  .form-control {
+    font-size:12px;
+    line-height:12px;
+    padding:4px;
+    height:auto;
+    border-radius:3px;
+  }
+  .form-horizontal .form-group  label {
+    padding-top:3:px;
+    line-height:100%;
+  }
+</style>
+<div id="widget_editor_holder">
+    <div ng-repeat="(bg_uniq_id,widget) in widgets">
+        <div id="widget_editor_{{bg_uniq_id}}" data-uniq-id="{{bg_uniq_id}}" class="widget_editor" ng-show="bg_uniq_id == active_widget_id">
+             <div class="component_editor_header" style="width:100%;background-color:#DDD;padding:5px;font-size:16px">
+                <!--TODO fix incorrect bgmanage_type on click -->
+                {{widget.bgmanage_type|fieldCapitalize}} <i class="fa fa-question-circle"></i>
+                <div class="pull-right" style="color:red" ng-click="deleteWidget(widget.bg_uniq_id)">
+                  Delete
+                </div>
+             </div>
+             <div class="component_editor_form" style="padding:10px; padding-top:20px;">
+              <form class="form-horizontal" style="font-size:12px">
+                  <!-- uniq_id -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Uniq ID</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.bg_uniq_id" readonly>
+                    </div>
+                  </div>
+                  <!-- id -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Id</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.id">
+                      <span style = "color:#b94a48" ng-show="!widget.id.length">Page Id is required. Page transistions wont work without this</span>
+                    </div>
+
+                  </div>
+                  <!-- class -->
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Class</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.klass">
+                    </div>
+                  </div>
+                  <!-- conditionals if type page -->
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'page'">
+                    <label class="col-sm-3 control-label">Page Name</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.bgmanage_title">
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'page'">
+                    <label class="col-sm-3 control-label">Dialog</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.data_dialog" ng-init="widget.data_dialog = widget.data_dialog || 'false' " ng-options="truthValue for truthValue in truthValues"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'page'">
+                    <label class="col-sm-3 control-label">Theme Swatch</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.data_theme_swatch" ng-init="widget.data_theme_swatch = widget.data_theme_swatch" ng-options="swatch for swatch in themeSwatches"></select>
+                    </div>
+                  </div>
+                  <!-- conditionals if type header -->
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'header'">
+                    <label class="col-sm-3 control-label">Theme Swatch</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.data_theme_swatch" ng-init="widget.data_theme_swatch = widget.data_theme_swatch" ng-options="swatch for swatch in themeSwatches"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'header'">
+                    <label class="col-sm-3 control-label">Position</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.data_position" ng-init="widget.data_position = widget.data_position" ng-options="position for position in positions"></select>
+                    </div>
+                  </div>
+                  <!-- conditionals if type header -->
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'heading' || widget.bgmanage_type == 'link_button' ">
+                    <label class="col-sm-3 control-label">Text</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.text">
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'heading'">
+                    <label class="col-sm-3 control-label">Style</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.heading_type" ng-init="widget.heading_type = widget.heading_type" ng-options="htype for htype in headingTypes"></select>
+                    </div>
+                  </div>
+                  <!-- conditionals if type link_button -->
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'link_button'">
+                    <label class="col-sm-3 control-label">Icon</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.icon" ng-init="widget.icon = widget.icon" ng-options="icon.value as icon.name for icon in icons"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if=" widget.bgmanage_type == 'link_button'">
+
+                   <label class="col-sm-3 control-label">Icon Position</label>
+                    <div class="col-sm-9">
+                       <select ng-model="widget.icon_position" ng-init="widget.icon_position = widget.icon_position" ng-options="icon_position for icon_position in ['top','bottom','left','right']"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'link_button'">
+                    <label class="col-sm-3 control-label">Theme Swatch</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.data_theme_swatch" ng-init="widget.data_theme_swatch = widget.data_theme_swatch" ng-options="swatch for swatch in themeSwatches"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'link_button'">
+                    <label class="col-sm-3 control-label">Link To</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.link_to" ng-init="widget.link_to = widget.link_to" ng-options="page.value as page.name for page in getAppPages()"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'link_button'">
+                    <label class="col-sm-3 control-label">Transition</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.transition" ng-init="widget.transition = widget.transition" ng-options="transition for transition in transitions"></select>
+                    </div>
+                  </div>
+                  <!-- conditionals if type image -->
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'image'">
+                    <label class="col-sm-3 control-label">Url</label>
+                    <div class="col-sm-9">
+                      <div class="input-group" ng-click="fetchImage(widget)">
+                        <div class="input-group-addon">Change</div>
+                        <input class="form-control" ng-model="widget.image_url" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'image' || widget.bgmanage_type == 'map'">
+                    <label class="col-sm-3 control-label">Width</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.width">
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'image'">
+                    <label class="col-sm-3 control-label">Width Dimension</label>
+                    <div class="col-sm-9">
+                     <select ng-model="widget.width_type" ng-init="widget.width_type = widget.width_type" ng-options="htype for htype in ['px','%']"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'image' || widget.bgmanage_type == 'map'">
+                    <label class="col-sm-3 control-label">Height</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.height">
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'image'">
+                    <label class="col-sm-3 control-label">Height Dimension</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.height_type" ng-init="widget.height_type = widget.height_type" ng-options="htype for htype in ['px','%']"></select>
+                      
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'image'">
+                    <label class="col-sm-3 control-label">Align</label>
+                    <div class="col-sm-9">
+                     <select ng-model="widget.image_align" ng-init="widget.image_align = widget.image_align" ng-options="htype for htype in ['left','center','right']"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if=" widget.bgmanage_type == 'map'">
+                    <label class="col-sm-3 control-label">Zoom</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.zoom">
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if=" widget.bgmanage_type == 'map'">
+                    <label class="col-sm-3 control-label">Place</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" ng-model="widget.location">
+                    </div>
+                  </div> 
+                  <div class="form-group" ng-if=" widget.bgmanage_type == 'navbar'">
+
+                   <label class="col-sm-3 control-label">Icon Position</label>
+                    <div class="col-sm-9">
+                       <select ng-model="widget.icon_position" ng-init="widget.icon_position = widget.icon_position" ng-options="icon_position for icon_position in ['top','bottom','left','right']"></select>
+                    </div>
+                  </div>                  
+                  <div class="form-group" ng-if=" widget.bgmanage_type == 'navbar'">
+                    <div style="padding-bottom:5px">
+                      <label class="col-sm-3 control-label">Members</label>
+                      <div class="col-sm-9">
+                        <button ng-click="addNavbarButton(widget)" class="btn btn-xs pull-right"> Add Item </button>
+                      </div>
+                    </div>
+                    <br/>
+                    <div class="col-sm-12">
+                      
+                        <accordion close-others="true">
+                          <div ng-model="widget.members" ui-sortable>
+                          <accordion-group ng-repeat="member in widget.members" >
+                            <accordion-heading>
+                              {{ member.text|fieldCapitalize }} <i class="pull-right fa fa-bars" ></i> <i ng-if="widget.members.length > 1" ng-click="deleteNavbarButton(widget,member)" class="pull-right fa fa-trash-o" ></i>
+                            </accordion-heading>
+
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Text</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" ng-model="member.text">
+                              </div> 
+                            </div>
+                            
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Icon</label>
+                              <div class="col-sm-9">
+                                <select ng-model="member.icon" ng-init="member.icon = member.icon" ng-options="icon.value as icon.name for icon in icons"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Theme</label>
+                              <div class="col-sm-9">
+                                <select ng-model="member.theme" ng-init="member.theme = member.theme" ng-options="theme for theme in themeSwatches"></select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Link To</label>
+                              <div class="col-sm-9">
+                                <select ng-model="member.link_to" ng-init="member.link_to = member.link_to" ng-options="page.value as page.name for page in getAppPages()"></select>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Transition</label>
+                              <div class="col-sm-9">
+                                <select ng-model="member.transition" ng-init="member.transition = member.transition" ng-options="transition for transition in transitions"></select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Is Active on Start</label>
+                              <div class="col-sm-9">
+                                <select ng-model="member.is_active" ng-init="member.is_active = member.is_active" ng-options="is_active for is_active in [true,false]"></select>
+                              </div>
+                            </div>
+                             
+                          </accordion-group>
+                          </div>
+                     
+                        </accordion>
+
+
+                    </div>
+                  </div>
+
+
+                  <div class="form-group" ng-if=" widget.bgmanage_type == 'footer'">
+
+                   <label class="col-sm-3 control-label">Icon Position</label>
+                    <div class="col-sm-9">
+                       <select ng-model="widget.icon_position" ng-init="widget.icon_position = widget.icon_position" ng-options="icon_position for icon_position in ['top','bottom','left','right']"></select>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-if="widget.bgmanage_type == 'footer'">
+                    <label class="col-sm-3 control-label">Theme Swatch</label>
+                    <div class="col-sm-9">
+                      <select ng-model="widget.data_theme_swatch" ng-init="widget.data_theme_swatch = widget.data_theme_swatch" ng-options="swatch for swatch in themeSwatches"></select>
+                    </div>
+                  </div>
+
+                  <!-- footer -->  
+                  <div class="form-group" ng-if=" widget.bgmanage_type == 'footer'">
+                    <div style="padding-bottom:5px">
+                      <label class="col-sm-3 control-label">Tabs</label>
+                      <div class="col-sm-9">
+                        <button ng-click="addFooterTab(widget)" class="btn btn-xs pull-right"> Add Item </button>
+                      </div>
+                    </div>
+                    <br/>
+                    <div class="col-sm-12">
+                      
+                        <accordion close-others="true">
+                          <div ng-model="widget.tabs" ui-sortable>
+                          <accordion-group ng-repeat="member in widget.tabs" >
+                            <accordion-heading>
+                              {{ member.text|fieldCapitalize }} <i class="pull-right fa fa-bars" ></i> <i ng-if="widget.tabs.length > 1" ng-click="deleteFooterTab(widget,member)" class="pull-right fa fa-trash-o" ></i>
+                            </accordion-heading>
+
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Text</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" ng-model="member.text">
+                              </div> 
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Icon</label>
+                              <div class="col-sm-9">
+                                <select ng-model="member.icon" ng-init="member.icon = member.icon" ng-options="icon.value as icon.name for icon in icons"></select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Link To</label>
+                              <div class="col-sm-9">
+                                <select ng-model="member.link_to" ng-init="member.link_to = member.link_to" ng-options="page.value as page.name for page in getAppPages()"></select>
+                              </div>
+                            </div>
+                            
+                            
+
+                             
+                          </accordion-group>
+                          </div>
+                     
+                        </accordion>
+
+
+                    </div>
+                  </div>
+
+
+
+                  
+
+
+
+
+              </form>
+             </div>
+        </div>
+    </div>
+</div>

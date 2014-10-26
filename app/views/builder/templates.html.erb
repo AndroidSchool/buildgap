@@ -1,0 +1,188 @@
+
+<script id="phone_contents" type="text/html">
+<div data-role="page" data-control-title="Home" id="page1">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <h3>
+            BuildGap
+        </h3>
+    </div>
+    <div data-role="content" id="content">
+        <div style=" text-align:center" data-controltype="image" class="control">
+            <img style="width: 200px; height: px" src="">
+        </div>
+        <div data-controltype="textblock" class="control">
+            
+        </div>
+    </div>
+</div>
+</script>
+<script id="page_template" type="text/html">
+  <div data-role="page" data-dialog="true" data-bgmanage-title="{{ bgmanage_title }}" id="{{ id }}" data-bgmanage-type="page">
+  <div>
+</script>
+<script id="content_template_bkp" type="text/html">
+  <div data-role="content" id="content" style="min-height:300px">
+  <div>
+</script>
+<script id="content_template" type="text/html">
+  <div data-role="content" id="content" data-bgmanage-type="content" style="">
+
+  <div>
+</script>
+<script id="link_button_template_placeholder_left" type="text/html">
+  <a href="#" data-bgmanage-type="dummy" data-dummy-type="header_link_button" data-align="left" class="dummy ui-btn ui-btn-left ui-corner-all">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</a>
+</script>
+<script id="link_button_template_placeholder_right" type="text/html">
+  <a href="#" data-bgmanage-type="dummy" data-dummy-type="header_link_button" data-align="right" class="dummy ui-btn ui-btn-right ui-corner-all">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</a>
+</script>
+<script id="link_button_template" type="text/html">
+  <a href="#" data-bgmanage-type="{{ bgmanage_type }}" data-bg-uniq-id="{{ bg_uniq_id }}" id="{{ id }}" class="{{ klass }} bgcontrol_click" data-role="button" data-icon="{{ icon }}" data-iconpos="{{ icon_position }}" data-theme="{{ data_theme_swatch }}" data-link-to="{{ link_to }}" data-transition="{{ transition }}">
+    {{ text }}
+  </a>
+</script>
+
+
+<script id="heading_template" type="text/html">
+        <{{ heading_type }} class="bgcontrol_click {{ klass }}" data-bg-uniq-id="{{ bg_uniq_id }}" data-bgmanage-type="{{ bgmanage_type }}" id="{{ id }}">
+            {{ text }}
+        </{{ heading_type }}>
+</script>
+<script id="heading_placeholder_template" type="text/html">
+        <{{ heading_type }} class="dummy {{ klass }}" data-bg-uniq-id="{{ bg_uniq_id }}"  data-dummy-type="heading" data-bgmanage-type="dummy" id="{{ id }}">
+            {{ text }}
+        </{{ heading_type }}>
+</script>
+<script id="header_template" type="text/html">
+    <div data-bg-uniq-id="{{ bg_uniq_id }}" data-theme="{{ data_theme_swatch  }}" data-role="header" data-position="{{ data_position }}" class = "{{ klass }}" id="{{ id  }}">
+      
+    </div>
+</script>
+<script id="tabbed_footer_tab_template" type="text/html">
+  <li>
+  <a data-link-to = "{{ link_to }}" data-transition="{{ transition }}" data-icon="{{ icon }}" >{{ text }}</a>
+  </li>  
+</script>
+<script id="tabbed_footer_template" type="text/html">
+
+<div data-bg-uniq-id="<@= bg_uniq_id @>" data-role="footer" class="control" data-id="<@= id @>" data-bgmanange-type="footer" data-position="fixed" data-theme="<@= data_theme_swatch @>" >
+  <div data-role="navbar" data-iconpos="<@= icon_position @>">
+    <ul>
+        <@ _.each(tabs,function(val,key) { @>
+          <li><a data-link-to = "<@= val['link_to'] @>" data-transition="<@= val['transition'] @>" data-icon="<@=val['icon']@>"><@= val['text'] @></a></li>
+        <@ });@> 
+
+    </ul>
+  </div><!-- /navbar -->
+</div><!-- /footer -->
+</script>
+<script id="footer_template" type="text/html">
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="<@= klass @>" id="<@= id @>" data-bgmanage="<@= bgmanage @>">
+    <div data-role="navbar" data-iconpos="<@= icon_position @>">
+      <ul>
+        <@ _.each(links,function(val,key) { @>
+          <li><a href="#" data-icon="<@=val['icon']@>"><@= val['text'] @></a></li>
+        <@ });@> 
+      </ul>
+    </div>
+  </div>
+</script>
+<script id="toc_template" type="text/html">
+     <div class="toc_outer">
+      <div class="toc_inner">
+        <div class="toc_page_container">
+          <div class="editor_skin">
+            <div class="actual_device">
+              <iframe id="device_frame1" width="100%" height="100%" frameBorder="0" scrolling="no" src="<%=@iframe_host%>/mobile.html"> </iframe>
+            </div>
+          </div>
+         </div>
+      </div> 
+     </div>
+</script>
+<script id="device_page_iframe_template" type="text/html">
+              <iframe class="device_iframe" frameBorder="0" style="display:none" data-uniq-id="{{bg_uniq_id}}" id="device_page_iframe_{{ bg_uniq_id  }}" width="100%" height="100%" src="<%=@iframe_host%>/mobile.html"> </iframe>
+</script>
+<script id="clone_device_page_iframe_template" type="text/html">
+     <div class="toc_outer">
+      <div class="toc_inner">
+        <div class="toc_page_container">
+          <div class="editor_skin">
+            <div class="actual_device">
+              <iframe id="clone_device_page_iframe_{{ bg_uniq_id }}" width="100%" height="100%" src="<%=@iframe_host%>/mobile.html"> </iframe>
+            </div>
+          </div>
+         </div>
+      </div> 
+     </div>
+</script>
+
+<script id="image_template" type="text/html">
+  <div style="text-align: {{image_align}};" data-bgmanage-type="image" class="control"  data-bg-uniq-id="{{ bg_uniq_id }}">
+        <img style="width: {{ width }}{{ width_type }}; height: {{ height }}{{ height_type }}" src="{{image_url}}">
+  </div>
+</script>
+<script id="map_template" type="text/html">
+  <div style="text-align: center;" data-bgmanage-type="map" class="control"  data-bg-uniq-id="{{ bg_uniq_id }}">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ location }}&amp;zoom={{ zoom }}&amp;size={{ width }}x{{ height }}&amp;markers={{ location }}&amp;sensor=false" width="{{ width }}" height="{{ height }}">
+  </div>
+</script>
+<script id="navbar_template" type="text/html">
+  <div data-bg-uniq-id="{{ bg_uniq_id }}" data-role="navbar" class="control" data-bgmanange-type="navbar" data-iconpos="{{ icon_position }}">
+    <ul>
+    </ul>
+  </div>
+
+</script>
+<script id="navbar_member_template" type="text/html">
+  <li>
+  <a data-link-to = "{{ link_to }}" data-transition="{{ transition }}" data-icon="{{ icon }}" data-theme="{{ theme }}">{{ text }}</a>
+  </li>  
+</script>
+
+<script id="device_test_iframe_template" type="text/html">
+
+
+<div data-role="page" data-dialog="false" data-control-title="Home" id="page1">
+    <div data-theme="a" data-role="header" data-position="fixed">
+        <h3>
+            Buildgap
+        </h3>
+    </div>
+    <div data-role="content" id="content">
+        <div style=" text-align:center" data-controltype="image" class="control">
+            <img style="width: 200px; height: px" src="">
+        </div>
+        <div data-controltype="textblock" class="control">
+            
+        </div>
+    </div>
+<div data-role="footer" data-position="fixed">
+    <div data-role="navbar" data-iconpos="bottom">
+      <ul>
+        <li><a href="#" data-icon="plus">More</a></li>
+        <li><a href="#" data-icon="minus">Less</a></li>
+        <li><a href="#" data-icon="delete">Delete</a></li>
+        <li><a href="#" data-icon="check">Like</a></li>
+        <li><a href="#" data-icon="info">Information</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  
+</script>
+
+<script id="custom_js_template" type="text/html">
+  <script id="custom_js" type="text/javascript">
+  {{ custom_js }}
+  </script>  
+</script>
+<script id="custom_css_template" type="text/html">
+  <style id="custom_css" type="text/css">
+  {{ custom_css }}
+  </style>  
+</script>
+

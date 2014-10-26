@@ -1,0 +1,154 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap/css/bootstrap
+ *= require layout-default-latest
+ *= require angular-ui-tree.min
+ *= require codemirror
+ *= require flat-ui
+ *= require demo
+ *= require treeview
+ *= require_self
+ */
+body {
+  padding-top:130px;
+  overflow: hidden;
+width: auto;
+height: auto;
+margin: 0px;
+position: absolute;
+top: 0px;
+bottom: 0px;
+left: 0px;
+right: 0px;
+cursor: auto;
+}
+#components_tab {
+  position: fixed;
+  right: 0;
+  left: 0;
+  border-width: 0 0 1px;
+  top: 40px;
+  z-index: 900;
+  overflow-x: scroll;    
+  scrollbar-base-color:#ffeaff;
+  overflow-y: hidden;
+  white-space: nowrap;
+  
+}
+.component {
+  font-size:13px;
+  height:80px;
+  width:100px;
+  text-align:center;
+}
+#navlist {
+  margin-bottom:0px;
+}
+#navlist li
+{
+display: inline-block;
+list-style-type: none;
+margin-bottom:0px;
+}
+#components_tab::-webkit-scrollbar {
+    height: 10px;
+}
+#components_tab::-webkit-scrollbar-track {
+    background:#f2f2f2 ;
+
+}
+#components_tab::-webkit-scrollbar-thumb {
+    background: #FFF;
+
+}
+#components_tab::-webkit-scrollbar-thumb {
+    background: #AAA;
+}
+#components_tab::-webkit-scrollbar-thumb:active {
+    background: #888;
+
+}
+.editor_skin {
+  height:520px;
+  width:360px;
+  background-color:black; 
+  padding:20px;
+  border-radius:7px;
+}
+.actual_device {
+  height:480px;
+  width:320px;
+  background-color:white; 
+}
+.highlight{
+  border: 1px solid yellow;
+  background-color:yellow;
+}  
+.hover_highlight{
+  border: 2px solid yellow;
+}  
+.scroll_vert::-webkit-scrollbar {
+    width: 7px;
+}
+.scroll_vert::-webkit-scrollbar-track {
+    background:#f2f2f2 ;
+
+}
+.scroll_vert::-webkit-scrollbar-thumb {
+    background: #FFF;
+
+}
+.scroll_vert::-webkit-scrollbar-thumb {
+    background: #AAA;
+}
+.scroll_vert::-webkit-scrollbar-thumb:active {
+    background: #888;
+
+}
+.toc_outer {
+  width:100%;
+  padding-top:5px;
+  padding-bottom:5px;
+}
+.toc_inner {
+  height:130px;
+  width:90px;
+  overflow:hidden;
+  margin:auto;
+}
+.toc_page_container {
+  -webkit-transform: scale(0.25, 0.25);
+  -webkit-transform-origin: 0 0;
+  -moz-transform: scale(0.25, 0.25);
+  -moz-transform-origin: 0 0;
+}
+#undo_controls {
+  padding:10px;
+  text-align:center;
+}
+.input-group-addon{
+  font-size:inherit;
+  padding-left:2px;
+  padding-right:2px;
+}
+
+.ui-layout-pane {
+  padding:0px;
+}
+.codearea {
+    background-color:red;
+    width:100%;
+    height:100%;
+}
+.CodeMirror {
+        height: 100%;
+        background: white;
+    }

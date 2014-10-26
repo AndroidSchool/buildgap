@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/getData', to: 'api#getData', defaults: { format: 'json' }
+  match '/' => "builder#show" ,:via => :get
+  match '/api/document/:document_id/:theme_id' => "api#getData" ,:via => :get,defaults: {format: 'json'}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

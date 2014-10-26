@@ -1,0 +1,139 @@
+{
+    "app": {
+        "javascript":{
+            "custom_js" : "",
+            "external_js_list" : []
+        },
+        "css":{
+            "custom_css" : "",
+            "external_css_list" : []
+        },
+        "pages": [
+            {
+                "bg_uniq_id": "bg_uniq_id_1",
+                "id": "page_1",
+                "klass": "",
+                "bgmanage_type": "page",
+                "bgmanage_title": "Home",
+                "data_dialog": "true",
+                "data_theme_swatch": "b",
+                "header": {
+                    "bg_uniq_id": "bg_uniq_header_1",
+                    "id": "header",
+                    "klass": "",
+                    "bgmanage_type": "header",
+                    "data_position": "fixed",
+                    "data_theme_swatch": "b",
+                    "left": {
+                        "bg_uniq_id": "bg_uniq_header_left_button",
+                        "id": "left_button_header",
+                        "klass": "",
+                        "bgmanage_type": "link_button",
+                        "text": "Home",
+                        "icon": "home",
+                        "icon_position": "left",
+                        "data_theme_swatch": "b",
+                        "link_to":"",
+                        "transition":"none"
+
+                    },
+                    "center": null,
+                    "right": null
+                },
+                "content": {
+                        "bg_uniq_id": "bg_uniq_content_1",
+                        "bgmanage_type": "content",
+                        "id": "",
+                        "klass": "",
+                        "members": [
+                            {
+                                "bg_uniq_id": "bg_2ad97130-3f22-7971-6c6b-e367d941980812",
+                                "id": "",
+                                "klass": "",
+                                "bgmanage_type": "image",
+                                "image_url": "http://buildgap.com/icons/image.png",
+                                "image_align": "center",
+                                "width": 288,
+                                "height": 250,
+                                "width_type": "px",
+                                "height_type": "px"
+                            }
+                        ]
+                    },
+                "footer": {
+                    "bg_uniq_id": "bg_2ad97130-3f22-7971-6c6b-e367d9419808-01",
+                    "id": "",
+                    "klass": "",
+                    "icon_position": "top",
+                    "data_theme_swatch": "b",
+                    "bgmanage_type": "footer",
+                    "tabs": [
+                        {
+                            "text": "Text 1",
+                            "link_to": "",
+                            "icon": "plus",
+                            "transition": "none"
+                        },
+                        {
+                            "text": "Text 2",
+                            "link_to": "",
+                            "icon": "plus",
+                            "transition": "none"
+                        },
+                        {
+                            "text": "Text 3",
+                            "link_to": "",
+                            "icon": "plus",
+                            "transition": "none"
+                        }
+                    ]
+                }
+            },
+            {
+                "bg_uniq_id": "bg_uniq_id_2",
+                "id": "page_2",
+                "klass": "",
+                "bgmanage_type": "page",
+                "bgmanage_title": "Video",
+                "data_dialog": "true",
+                "data_theme_swatch":"a",
+                "header": {
+                    "bg_uniq_id": "bg_uniq_header_2",
+                    "id": "header",
+                    "klass": "",
+                    "bgmanage_type": "header",
+                    "data_position": "fixed",
+                    "data_theme_swatch": "b",
+                    "left": {
+                        "bg_uniq_id": "bg_uniq_header_left_button_1",
+                        "id": "left_button_header",
+                        "klass": "",
+                        "bgmanage_type": "link_button",
+                        "text": "Home",
+                        "icon": "home",
+                        "icon_position": "left",
+                        "data_theme_swatch": "b",
+                        "link_to":"",
+                        "transition":"none"
+                    },
+                    "center": {
+                        "bg_uniq_id": "bg_uniq_header_heading",
+                        "id": "header_heading",
+                        "klass": "",
+                        "bgmanage_type": "heading",
+                        "text": "This is the heading",
+                        "heading_type": "h3"
+                    },
+                    "right": null
+                },
+                "content": {
+                        "bg_uniq_id": "bg_uniq_content_2",
+                        "id": "",
+                        "klass": "",
+                        "members": []
+                    },
+                "footer": null
+            }
+        ]
+    }
+}
