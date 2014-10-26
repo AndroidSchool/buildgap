@@ -147,7 +147,10 @@ builderApp.factory('AppUIService',function($http,$rootScope,DevicePage){
       var html = "";
       for(var devicePageUniqId in self.devicePages){
         console.log("Html for Page " + devicePageUniqId);
+        html += "<!-- New Page Starts -->\n";
         html += self.devicePages[devicePageUniqId].getUpdatedDevicePageHtml();
+        html += "\n";
+
       }
       return html;
 

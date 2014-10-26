@@ -354,8 +354,10 @@ builderApp.factory('DevicePage',function($http,PageHeader,PageContent,PageTabbed
       var clone = $('<div>').append(device_page).clone();
       clone.find('*').removeAttr('data-bgmanage-type');
       clone.find('*').removeAttr('data-bg-uniq-id');
-      clone.find('.dummy').remove();
-      return clone.html();
+      /*clone.find('.dummy').remove();*/
+      var html_styler = get_html_styler();
+      return html_styler(clone.html());
+      
     };
 
 
