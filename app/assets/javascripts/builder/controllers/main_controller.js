@@ -126,39 +126,13 @@ MainController.prototype.switchToView = function(view) {
   self.deviceTestPage.destroy();
   if(view == 'TEST'){
     self.deviceTestPage.reload();
+  }
+  if(view == 'BUILDER'){
+    self.appUIService.switchToActivePage();
   } 
 };
-MainController.prototype.toggleTestView = function(enabled) {
-  var self = this;
-  if(enabled){
-    self.scope.layout.hide('east');
-    self.scope.layout.hide('west');
-    $('#code-layout').hide();
-    self.appUIService.hideAllDevicePages();
-    self.deviceTestPage.reload();
-  } else {
-    $('#code-layout').hide();
-    self.scope.layout.show('east');
-    self.scope.layout.show('west');
-    self.appUIService.switchToActivePage();
-    self.deviceTestPage.destroy();
-  }
-  
-};
-MainController.prototype.toggleCodeView = function(enabled) {
-  var self = this;
-  if(enabled){
-    self.scope.layout.hide('east');
-    $('#editor-layout').hide();
-    $('#code-layout').show();
 
-  } else {
-    self.scope.layout.show('east');
-    $('#editor-layout').show();    
-    $('#code-layout').hide();
-  }
-  
-};
+
 MainController.prototype.getUpdatedAppHtml = function() {
   var self = this;
   return self.appUIService.getUpdatedAppHtml();

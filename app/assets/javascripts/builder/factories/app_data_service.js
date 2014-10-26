@@ -103,8 +103,7 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
 
         self.parentController.insertPage();
       }
-      $rootScope.testViewEnabled = false;
-      $rootScope.codeViewEnabled = false;
+
       $rootScope.currentView = 'BUILDER';
       $rootScope.previousView = null;
       $rootScope.switchToView = function(view){
@@ -124,16 +123,6 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
         },100)
         
         self.parentController.switchToView(view);
-      }
-      $rootScope.toggleTestView = function(){
-        $rootScope.codeViewEnabled = false;
-        $rootScope.testViewEnabled = !$rootScope.testViewEnabled;
-        self.parentController.toggleTestView($rootScope.testViewEnabled);
-      }
-      $rootScope.toggleCodeView = function(){
-        $rootScope.testViewEnabled = false;
-        $rootScope.codeViewEnabled = !$rootScope.codeViewEnabled;
-        self.parentController.toggleCodeView($rootScope.codeViewEnabled);
       }
 
       $rootScope.pageTitle = function(title){
@@ -259,6 +248,7 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout){
     AppDataService.prototype.switchToPage = function(page_bg_uniq_id) {
       var self = this;
       self.parentController.switchToPage(page_bg_uniq_id);
+      $rootScope.switchToView('BUILDER');
     };
     AppDataService.prototype.loadDocumentTree = function() {
       var self = this;
