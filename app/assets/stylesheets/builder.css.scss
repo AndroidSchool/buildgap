@@ -57,6 +57,14 @@ display: inline-block;
 list-style-type: none;
 margin-bottom:0px;
 }
+.navbar-header a {
+  padding-top:8px;
+  padding-bottom:8px;
+}
+.navbar-collapse a {
+  padding-top:8px !important;
+  padding-bottom:8px !important;
+}
 #components_tab::-webkit-scrollbar {
     height: 10px;
 }
