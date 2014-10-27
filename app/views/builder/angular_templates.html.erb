@@ -1,0 +1,35 @@
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Insert/Reorder/Delete External {{ form.file_type | fieldCapitalize }} files</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    
+                    <div class="col-sm-7" >
+                      <input class="form-control" style="font-size:19px" ng-model="form.new_external_file">
+                      <p style="font-size:13px;color:#b94a48;font-style:italic"> Please Enter a valid http(s) url </p>
+                    </div>
+                    <div class="col-sm-3"><button ng-click="addExternalFile()" class="btn btn-sm btn-primary"> Add External File</button></div>
+                  </div>
+            </form>
+            <ul ui-sortable class="list-group" ng-model="form.files">
+                <li class = "list-group-item" ng-repeat="file in form.files track by $index" >
+                <div class="pull-left">
+                    <i class="fa fa-arrows-v">&nbsp;</i>
+                </div>
+                <div "external_file">{{ file }}
+                    <div class="pull-right" ng-click="delete(file)">
+                    <i class="fa fa-trash-o">&nbsp;</i>
+                    </div>
+                </div>
+                
+                </li>
+            </ul>
+            
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</script>

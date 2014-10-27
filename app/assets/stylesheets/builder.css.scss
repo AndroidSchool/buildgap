@@ -8,11 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require bootstrap/css/bootstrap
  *= require layout-default-latest
+ *= require bootstrap/css/bootstrap
  *= require angular-ui-tree.min
  *= require codemirror
- *= require flat-ui
  *= require demo
  *= require treeview
  *= require_self
@@ -57,6 +56,14 @@ cursor: auto;
 display: inline-block;
 list-style-type: none;
 margin-bottom:0px;
+}
+.navbar-header a {
+  padding-top:8px;
+  padding-bottom:8px;
+}
+.navbar-collapse a {
+  padding-top:8px !important;
+  padding-bottom:8px !important;
 }
 #components_tab::-webkit-scrollbar {
     height: 10px;
@@ -152,3 +159,4 @@ margin-bottom:0px;
         height: 100%;
         background: white;
     }
+    

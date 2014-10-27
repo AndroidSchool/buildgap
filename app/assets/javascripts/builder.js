@@ -3,14 +3,15 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require jquery.layout-latest
-//= require jquery-ui-droppable-iframe-fix.js
+//= require jquery-ui-droppable-iframe-fix
 //= require underscore-min
 //= require turbolinks
 //= require codemirror
-//= require codemirror_modes/xml.js
-//= require codemirror_modes/javascript.js
-//= require codemirror_modes/css.js
-//= require codemirror_modes/htmlmixed.js
+//= require codemirror_modes/xml
+//= require codemirror_modes/javascript
+//= require codemirror_modes/css
+//= require codemirror_modes/htmlmixed
+//= require beautify-html
 //= require angular
 //= require angular-route
 //= require angular-sanitize
@@ -32,5 +33,6 @@
 //= require builder/factories/device_test_page
 //= require builder/factories/app_ui_service
 //= require builder/factories/app_data_service
+//= require builder/controllers/external_files_controller
 //= require builder/controllers/main_controller
 
