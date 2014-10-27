@@ -145,6 +145,9 @@ MainController.prototype.loadDocumentTree = function() {
  var self = this;
  self.appDataService.loadDocumentTree();
 };
-
+MainController.prototype.exportAppAsHtml = function() {
+  var self = this;
+  self.deviceTestPage.exportAppAsHtml();
+};
 
 builderApp.controller('MainController',MainController);

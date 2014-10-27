@@ -125,6 +125,10 @@ builderApp.factory('AppDataService',function($http,$rootScope,$timeout,$modal){
         self.parentController.switchToView(view);
       }
 
+      $rootScope.exportAppAsHtml = function(){
+        self.parentController.exportAppAsHtml();
+      }
+
       $rootScope.pageTitle = function(title){
 
         if(nullOrUndefined(title) || title.trim().length == 0){
