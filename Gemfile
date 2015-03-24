@@ -45,3 +45,8 @@ gem 'angularjs-rails'
 
 # heroku support
 gem 'rails_12factor', group: :production
+
+#sqlite for development
+group :development, :test do
+  gem 'sqlite3'
+end
