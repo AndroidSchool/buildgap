@@ -45,6 +45,15 @@ builderApp.factory('DeviceTestPage',function($http){
      DeviceTestPage.prototype.destroy = function() {
        $('#device_test_iframe').remove();
      };
+     DeviceTestPage.prototype.exportAppAsHtml = function() {
+       var self = this;
+       var updatedAppHtml = self.parentController.getUpdatedAppHtml(); 
+       var zip = new JSZip();
+       var project_folder = zip.folder('www');
+       project_folder.file('index.html',updatedAppHtml);
+       var content = zip.generate({type:"blob"});
+       saveAs(content,"project.zip");
+     };
 
     return DeviceTestPage;
 });

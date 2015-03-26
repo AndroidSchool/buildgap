@@ -4,6 +4,8 @@
 //= require jquery_ujs
 //= require jquery.layout-latest
 //= require jquery-ui-droppable-iframe-fix
+//= require jszip
+//= require FileSaver
 //= require underscore-min
 //= require turbolinks
 //= require codemirror

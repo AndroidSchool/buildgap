@@ -34,13 +34,12 @@
           <div class="navbar-nav navbar-right" style="padding-top:6px;padding-right:10px">
 
             <div class="btn-group">
-              <button ng-click="switchToView('BUILDER')" type="button" class="btn btn-xs ">{{ item }}</button>
               <button ng-click="switchToView('BUILDER')" type="button" class="btn btn-xs "><i class="fa fa-wrench"></i>&nbsp;Edit</button>
               <button ng-click="switchToView('TEST')" type="button" class="btn btn-xs btn-primary"><i class="fa fa-play"></i>&nbsp;Test Your app</button>
             </div>
             <div class="btn-group">
               <button type="button" class="btn btn-xs"><i class="fa fa-save"></i>&nbsp;Save</button>
-              <button ng-click="switchToView('CODE_HTML')" type="button" class="btn btn-xs btn-success"><i class="fa fa-cloud-download"></i>&nbsp;Download</button>
+              <button ng-click="exportAppAsHtml()" type="button" class="btn btn-xs btn-success"><i class="fa fa-cloud-download"></i>&nbsp;Download</button>
             </div>
           </div>
         </div><!--/.nav-collapse -->
